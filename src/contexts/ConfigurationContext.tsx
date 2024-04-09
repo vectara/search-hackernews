@@ -64,7 +64,7 @@ const APP_CONFIGS = {
 export const ConfigContextProvider = ({ children }: Props) => {
   const exampleQuestions = configuration.questions ?? [];
   const rerankConfig = {
-    isEnabled: true,
+    isEnabled: false,
     numResults: 50,
     id: mmrRerankerId,
     diversityBias: 0.1
@@ -73,7 +73,7 @@ export const ConfigContextProvider = ({ children }: Props) => {
   const hybrid = {
     numWords: 2,
     lambdaLong: 0.025,
-    lambdaShort: 0.1
+    lambdaShort: 0.2
   };
 
   return (
