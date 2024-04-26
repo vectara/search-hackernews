@@ -1,13 +1,6 @@
 # Vectara sample code for a Semantic Search UI
 
-This app provides working sample code for implementing a Semantic Search UI that's powered by [Vectara](https://vectara.com/). It was generated using the [Create-UI code-generator](https://github.com/vectara/create-ui).
-
-The Semantic Search UI is characterized by:
-
-- A search box for entering a natural-language query. This can take the form of a question or just search terms.
-- A list of search results.
-
-A user will typically scan the list for relevant results and dig deeper into any results that look interesting. They'll try variations on the same basic query to make sure they find as many potentially useful results as possible.
+This app provides Semantic Search for hackernews, powered by [Vectara](https://vectara.com/). It was generated using the [Create-UI code-generator](https://github.com/vectara/create-ui), and updated to the requirements of good search for Hacker News.
 
 ## Dependencies
 
@@ -34,21 +27,19 @@ export const configuration: Config = {
 };
 ```
 
-You can configure sample questions like this:
+Sample questions are configued like this:
 
 ```ts
 export const configuration: Config = {
   // ... other configs here
   questions: [
-    "How do I enable hybrid search?",
-    "How is data encrypted?",
-    "What is a textless corpus?",
-    "How do I configure OAuth?"
+    "what was announced in GTC 2024?", 
+    "bash power user", 
+    "Open source LLM", 
+    "What is a vector database?"
   ]
 };
 ```
-
-For more information on configuration options, see the [Configuration Reference section](#configuration-reference) or the original [TS definition](./src/contexts/ConfigurationContext.tsx) for the `Config`.
 
 ## Running locally
 
