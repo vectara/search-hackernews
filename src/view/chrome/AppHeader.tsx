@@ -16,7 +16,7 @@ export const AppHeader = () => {
               <h1>
                 <strong>
                   <VuiLink isAnchor href="https://vectara.com/">
-                    Vectara Search Demo
+                    Vectara
                   </VuiLink>
                 </strong>
               </h1>
