@@ -53,7 +53,7 @@ export const sendSearchRequest = async ({
       {
         query: queryValue,
         start: 0,
-        numResults: rerank ? rerankNumResults : 20,
+        numResults: rerank ? rerankNumResults : 10,
         corpusKey: corpusKeyList,
         contextConfig: {
           sentencesBefore: 2,

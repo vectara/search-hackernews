@@ -73,7 +73,7 @@ export const ConfigContextProvider = ({ children }: Props) => {
   const hybrid = {
     numWords: 2,
     lambdaLong: 0.025,
-    lambdaShort: 0.2
+    lambdaShort: 0.1
   };
 
   return (

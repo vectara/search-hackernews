@@ -6,11 +6,12 @@ import "./SearchResult.scss";
 type Props = {
   url: string;
   title: string;
+  date: string;
   snippets: string[];
   position: number;
 };
 
-export const GroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(({ url, title, snippets, position }: Props, ref) => {
+export const GroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(({ url, title, date, snippets, position }: Props, ref) => {
 
   return (
     <VuiGroupedSearchResult
@@ -18,6 +19,7 @@ export const GroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(({ u
       result={{
         title,
         url,
+        date,
         snippets: snippets
       }}
       position={position + 1}

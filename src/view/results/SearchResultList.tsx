@@ -7,6 +7,7 @@ type Props = {
 
 type UrlData = {
   title: string;
+  date: string;
   snippets: string[];
 }
 
@@ -14,11 +15,13 @@ export const SearchResultList = ({ results }: Props) => {
   // Let's dedupe the data here
 
   const deduped = results.reduce((acc: Record<string, UrlData>, result: DeserializedSearchResult) => {
+    console.log("result", result)
     if (!acc[result.url]) {
       const urlData = { 
         title: result.title, 
+        date: result.metadata.date,
         snippets: [result.snippet.text] 
-      };
+      } as UrlData;
       acc[result.url] = urlData;
     } else {
       acc[result.url].snippets.push(result.snippet.text);
@@ -30,7 +33,7 @@ export const SearchResultList = ({ results }: Props) => {
   return (
     <>
       {Object.keys(deduped).map((url, i) => (
-        <GroupedSearchResult key={i} url={url} title={deduped[url].title} snippets={deduped[url].snippets} position={i}/>
+        <GroupedSearchResult key={i} url={url} title={deduped[url].title} date={deduped[url].date} snippets={deduped[url].snippets} position={i}/>
       ))}
     </>
   );

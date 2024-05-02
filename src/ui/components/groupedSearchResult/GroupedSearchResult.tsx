@@ -29,6 +29,7 @@ export const VuiGroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(
     const {
       title,
       url,
+      date,
       snippets
     } = result;
 
@@ -55,7 +56,7 @@ export const VuiGroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(
                 <h3>{hasTitle ? title : url}</h3>
               </VuiLink>
             ) : (
-              <h3>{title}</h3>
+              <h3>{title} | {date}</h3>
             )}
           </VuiTitle>
         )}
@@ -67,7 +68,7 @@ export const VuiGroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(
         )}
 
         <VuiText {...snippetProps} size="s">
-            {snippets.slice(0,3).map((snippet) => (
+            {snippets.slice(0,4).map((snippet) => (
               <div style={{ paddingLeft: 10, marginTop: '1em' }}>{"..." + snippet + "..."}</div>
             ))}
         </VuiText>
