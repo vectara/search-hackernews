@@ -56,13 +56,13 @@ export const VuiGroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(
                 <h3>{hasTitle ? title : url}</h3>
               </VuiLink>
             ) : (
-              <h3>{title} | {date}</h3>
+              <h3>{title}</h3>
             )}
           </VuiTitle>
         )}
         {subTitle && (
           <>
-            {title && <VuiSpacer size="xs" />}
+            {title && <VuiSpacer size="xs" />} 
             {subTitle}
           </>
         )}
