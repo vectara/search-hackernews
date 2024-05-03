@@ -33,7 +33,7 @@ export const GroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(({ u
         ) : (
           <VuiText size="s" className="searchResultSiteCategory">
             <p>
-              <VuiTextColor color="subdued">{url}</VuiTextColor>
+                <VuiTextColor color="subdued">{url}</VuiTextColor>
             </p>
           </VuiText>
         ))

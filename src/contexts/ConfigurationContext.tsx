@@ -64,7 +64,7 @@ const APP_CONFIGS = {
 export const ConfigContextProvider = ({ children }: Props) => {
   const exampleQuestions = configuration.questions ?? [];
   const rerankConfig = {
-    isEnabled: false,
+    isEnabled: true,
     numResults: 50,
     id: mmrRerankerId,
     diversityBias: 0.1

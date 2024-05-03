@@ -15,16 +15,17 @@ export const SearchResultList = ({ results }: Props) => {
   // Let's dedupe the data here
 
   const deduped = results.reduce((acc: Record<string, UrlData>, result: DeserializedSearchResult) => {
-    console.log("result", result)
+    console.log("result", result)  // TEMP
+    const snippet_display = result.snippet.pre + '<b>' + result.snippet.text + '</b>' + result.snippet.post
     if (!acc[result.url]) {
       const urlData = { 
         title: result.title, 
         date: result.metadata.date,
-        snippets: [result.snippet.text] 
+        snippets: [snippet_display] 
       } as UrlData;
       acc[result.url] = urlData;
     } else {
-      acc[result.url].snippets.push(result.snippet.text);
+      acc[result.url].snippets.push(snippet_display);
     }
 
     return acc;

@@ -4,6 +4,7 @@ import { VuiSpacer } from "../spacer/Spacer";
 import { VuiTitle } from "../typography/Title";
 import { VuiLink } from "../link/Link";
 import { VuiText } from "../typography/Text";
+import Markdown from "markdown-to-jsx";
 
 export type GroupedSearchResult = {
   title?: string;
@@ -29,7 +30,6 @@ export const VuiGroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(
     const {
       title,
       url,
-      date,
       snippets
     } = result;
 
@@ -68,8 +68,16 @@ export const VuiGroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(
         )}
 
         <VuiText {...snippetProps} size="s">
-            {snippets.slice(0,4).map((snippet) => (
-              <div style={{ paddingLeft: 10, marginTop: '1em' }}>{"..." + snippet + "..."}</div>
+          {snippets.slice(0,4).map((snippet) => (
+            <div style={{ paddingLeft: 15, marginTop: '1em' }}>
+            <Markdown
+              children={'...' + snippet + '...'}
+              options={{
+                forceBlock: true,
+              }}
+            />
+            </div>
+//          <div style={{ paddingLeft: 15, marginTop: '1em' }}>{"..." + snippet + "..."}</div>
             ))}
         </VuiText>
 
