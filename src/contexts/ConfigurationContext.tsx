@@ -67,7 +67,7 @@ export const ConfigContextProvider = ({ children }: Props) => {
     isEnabled: true,
     numResults: 50,
     id: mmrRerankerId,
-    diversityBias: 0.1
+    diversityBias: 0.05
   };
 
   const hybrid = {
