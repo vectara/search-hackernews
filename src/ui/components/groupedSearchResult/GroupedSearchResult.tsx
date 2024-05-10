@@ -77,7 +77,6 @@ export const VuiGroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(
               }}
             />
             </div>
-//          <div style={{ paddingLeft: 15, marginTop: '1em' }}>{"..." + snippet + "..."}</div>
             ))}
         </VuiText>
 
