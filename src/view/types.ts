@@ -1,4 +1,4 @@
-export type DocMetadata = {
+export type Metadata = {
   name: string;
   value: string;
 };
@@ -14,7 +14,7 @@ export type SearchError = {
 
 export type SearchResponseDoc = {
   id: string;
-  metadata: DocMetadata[];
+  metadata: Metadata[];
 };
 
 export type SearchResponseResult = {
@@ -24,6 +24,7 @@ export type SearchResponseResult = {
     dim: string[];
   };
   documentIndex: string;
+  metadata: Metadata[];
   resultLength: number;
   resultOffset: number;
   score: number;
@@ -43,16 +44,18 @@ export type CombinedResult = {
 export type CombinedResults = CombinedResult[];
 
 export type DeserializedSearchResult = {
-  id: string;
+  doc_id: string;
+  doc_by: string;
+  doc_date: string;
+  url: string;
+  title: string;
   snippet: {
     pre: string;
     text: string;
     post: string;
   };
-  source: string;
-  url: string;
-  title: string;
-  metadata: Record<string, unknown>;
+  by: string;
+  date: string;
 };
 
 export const standardRerankerId = 272725717;

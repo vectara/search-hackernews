@@ -9,8 +9,9 @@ import Markdown from "markdown-to-jsx";
 export type GroupedSearchResult = {
   title?: string;
   url?: string;
-  date?: string;
-  snippets: string[];
+  doc_date?: string;
+  doc_by?: string;
+  snippets: any[];
 };
 
 type Props = {
@@ -71,7 +72,7 @@ export const VuiGroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(
           {snippets.slice(0,4).map((snippet) => (
             <div style={{ paddingLeft: 15, marginTop: '1em' }}>
             <Markdown
-              children={'...' + snippet + '...'}
+              children={snippet.by + ' (' + snippet.date + '): ' + snippet.text + '...'}
               options={{
                 forceBlock: true,
               }}

@@ -5,27 +5,34 @@ type Props = {
   results: Array<DeserializedSearchResult>;
 };
 
-type UrlData = {
+export type SnippetData = {
+  text: string;
+  by: string;
+  date: string;
+}
+
+export type ResultData = {
   title: string;
   date: string;
-  snippets: string[];
+  by: string
+  snippets: SnippetData[];
 }
 
 export const SearchResultList = ({ results }: Props) => {
   // Let's dedupe the data here
-
-  const deduped = results.reduce((acc: Record<string, UrlData>, result: DeserializedSearchResult) => {
-    console.log("result", result)  // TEMP
-    const snippet_display = result.snippet.pre + '<b>' + result.snippet.text + '</b>' + result.snippet.post
+  const deduped = results.reduce((acc: Record<string, ResultData>, result: DeserializedSearchResult) => {
+    const snippetDisplay = result.snippet.pre + '<b>' + result.snippet.text + '</b>' + result.snippet.post
+    const snippetData = { text: snippetDisplay, by: result.by, date: result.date } as SnippetData;
     if (!acc[result.url]) {
-      const urlData = { 
+      const resultData = { 
         title: result.title, 
-        date: result.metadata.date,
-        snippets: [snippet_display] 
-      } as UrlData;
-      acc[result.url] = urlData;
+        date: result.doc_date,
+        by: result.doc_by,
+        snippets: [snippetData] 
+      } as ResultData;
+      acc[result.url] = resultData;
     } else {
-      acc[result.url].snippets.push(snippet_display);
+      acc[result.url].snippets.push(snippetData);
     }
 
     return acc;
@@ -34,7 +41,7 @@ export const SearchResultList = ({ results }: Props) => {
   return (
     <>
       {Object.keys(deduped).map((url, i) => (
-        <GroupedSearchResult key={i} url={url} title={deduped[url].title} date={deduped[url].date} snippets={deduped[url].snippets} position={i}/>
+        <GroupedSearchResult key={i} url={url} title={deduped[url].title} doc_date={deduped[url].date} doc_by={deduped[url].by} snippets={deduped[url].snippets} position={i}/>
       ))}
     </>
   );

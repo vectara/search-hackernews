@@ -1,7 +1,7 @@
 import { parseSnippet } from "./parseSnippet";
-import { DocMetadata, SearchResponse, DeserializedSearchResult } from "../view/types";
+import { Metadata, SearchResponse, DeserializedSearchResult } from "../view/types";
 
-const convertMetadataToObject = (metadata: DocMetadata[]) => {
+const convertMetadataToObject = (metadata: Metadata[]) => {
   const obj: Record<string, string> = {};
   metadata.forEach((item) => {
     obj[item.name] = item.value;
@@ -9,15 +9,26 @@ const convertMetadataToObject = (metadata: DocMetadata[]) => {
   return obj;
 };
 
-const parseMetadata = (rawMetadata: DocMetadata[]) => {
+const parseDocMetadata = (rawMetadata: Metadata[]) => {
   const metadata = convertMetadataToObject(rawMetadata);
   return {
-    source: metadata.source as string,
     url: metadata.url,
     title: metadata.title || "Untitled",
+    doc_by: metadata.by,
+    doc_date: metadata.date,
     metadata
   };
 };
+
+const parseResponseMetadata = (rawMetadata: Metadata[]) => {
+  const metadata = convertMetadataToObject(rawMetadata);
+  return {
+    by: metadata.by,
+    date: metadata.date,
+    metadata
+  };
+};
+
 
 export const deserializeSearchResponse = (
   searchResponse?: SearchResponse
@@ -28,24 +39,28 @@ export const deserializeSearchResponse = (
   const { response: responses, document: documents } = searchResponse;
 
   responses.forEach((response) => {
-    const { documentIndex, text: rawText, score } = response;
+    const { documentIndex, text: rawText, score, metadata: rawMetadata } = response;
+    const { by, date } = parseResponseMetadata(rawMetadata);
     const { pre, post, text } = parseSnippet(rawText);
     const document = documents[Number(documentIndex)];
-    const { id, metadata: rawMetadata } = document;
-    const { source, url, title, metadata } = parseMetadata(rawMetadata);
+
+    const { id: doc_id, metadata: docMetadata } = document;
+    const { url, title, doc_by, doc_date } = parseDocMetadata(docMetadata);
 
     if (score > 0.7) {
       results.push({
-        id,
+        doc_id,
+        doc_by,
+        doc_date,
         snippet: {
           pre,
           text,
           post
         },
-        source,
+        by,
+        date,
         url,
         title,
-        metadata
       });
     }
   });

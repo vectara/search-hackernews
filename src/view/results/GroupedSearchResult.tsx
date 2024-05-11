@@ -1,17 +1,19 @@
 import { forwardRef } from "react";
 import { VuiGroupedSearchResult } from "../../ui/components/groupedSearchResult/GroupedSearchResult";
+import { SnippetData } from "./SearchResultList";
 import { VuiText, VuiTextColor } from "../../ui";
 import "./SearchResult.scss";
 
 type Props = {
   url: string;
   title: string;
-  date: string;
-  snippets: string[];
+  doc_date: string;
+  doc_by: string;
+  snippets: SnippetData[];
   position: number;
 };
 
-export const GroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(({ url, title, date, snippets, position }: Props, ref) => {
+export const GroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(({ url, title, doc_date, doc_by, snippets, position }: Props, ref) => {
 
   return (
     <VuiGroupedSearchResult
@@ -19,15 +21,16 @@ export const GroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(({ u
       result={{
         title,
         url,
-        date,
+        doc_date,
+        doc_by,
         snippets: snippets
       }}
       position={position + 1}
       subTitle={
-        url && (date ? (
+        url && (doc_date ? (
           <VuiText size="s" className="searchResultSiteCategory">
             <p>
-              <VuiTextColor color="subdued">{url} | {date}</VuiTextColor>
+              <VuiTextColor color="warning">{doc_by} ({doc_date}): {url} </VuiTextColor>
             </p>
           </VuiText>
         ) : (
