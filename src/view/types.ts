@@ -60,3 +60,4 @@ export type DeserializedSearchResult = {
 
 export const standardRerankerId = 272725717;
 export const mmrRerankerId = 272725718;
+export const SlingshotRerankerId = 272725719;

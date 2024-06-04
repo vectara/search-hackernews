@@ -47,7 +47,7 @@ export const deserializeSearchResponse = (
     const { id: doc_id, metadata: docMetadata } = document;
     const { url, title, doc_by, doc_date } = parseDocMetadata(docMetadata);
 
-    if (score > 0.7) {
+    if (score > 0.6) {
       results.push({
         doc_id,
         doc_by,

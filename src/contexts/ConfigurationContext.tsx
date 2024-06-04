@@ -1,5 +1,5 @@
 import { createContext, useContext, ReactNode } from "react";
-import { mmrRerankerId } from "../view/types";
+import { SlingshotRerankerId } from "../view/types";
 import { configuration } from "../configuration";
 
 export interface Config {
@@ -65,15 +65,15 @@ export const ConfigContextProvider = ({ children }: Props) => {
   const exampleQuestions = configuration.questions ?? [];
   const rerankConfig = {
     isEnabled: true,
-    numResults: 50,
-    id: mmrRerankerId,
+    numResults: 100,
+    id: SlingshotRerankerId, //mmrRerankerId,
     diversityBias: 0.05
   };
 
   const hybrid = {
     numWords: 2,
-    lambdaLong: 0.025,
-    lambdaShort: 0.1
+    lambdaLong: 0.0,
+    lambdaShort: 0.05
   };
 
   return (
