@@ -27,11 +27,11 @@ export const GroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(({ u
       }}
       position={position + 1}
       subTitle={
-        url && (doc_date ? (
+        url && doc_by && doc_date ? (
           <VuiText size="s" className="searchResultSiteCategory">
             <p>
               <VuiTextColor color="warning">{doc_by} ({doc_date}):</VuiTextColor>
-              <VuiTextColor color="accent"> {url} </VuiTextColor>
+              <VuiTextColor color="subdued"> {url} </VuiTextColor>
             </p>
           </VuiText>
         ) : (
@@ -40,7 +40,7 @@ export const GroupedSearchResult = forwardRef<HTMLDivElement | null, Props>(({ u
                 <VuiTextColor color="subdued">{url}</VuiTextColor>
             </p>
           </VuiText>
-        ))
+        )
       }
     />
   );
