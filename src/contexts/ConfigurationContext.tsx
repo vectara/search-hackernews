@@ -66,8 +66,7 @@ export const ConfigContextProvider = ({ children }: Props) => {
   const rerankConfig = {
     isEnabled: true,
     numResults: 100,
-    id: SlingshotRerankerId, //mmrRerankerId,
-    diversityBias: 0.05
+    id: SlingshotRerankerId,
   };
 
   const hybrid = {
