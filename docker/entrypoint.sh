@@ -1,4 +1,4 @@
 #!/bin/bash
 
-export PORT=4444
+export PORT=3000
 exec node server/index.js
