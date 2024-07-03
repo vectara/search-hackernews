@@ -22,7 +22,11 @@ export const SearchResultList = ({ results }: Props) => {
   // Let's dedupe the data here
   const deduped = results.reduce((acc: Record<string, ResultData>, result: DeserializedSearchResult) => {
     const snippetDisplay = result.snippet.pre + '<b>' + result.snippet.text + '</b>' + result.snippet.post
-    const snippetData = { text: snippetDisplay, by: result.by, date: result.date } as SnippetData;
+    const snippetData = { 
+      text: snippetDisplay, 
+      by: result.by || result.doc_by, 
+      date: result.date || result.doc_date
+    } as SnippetData;
     if (!acc[result.url]) {
       const resultData = { 
         title: result.title, 
