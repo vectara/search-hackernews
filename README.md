@@ -113,4 +113,4 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2024 [Vectara](https://github.com/vectara).<br />
-This project is [Apache 2.0](https://github.com/vectara/ragtime/blob/main/LICENSE) licensed.
+This project is [Apache 2.0](https://github.com/vectara/search-hackernews/blob/main/LICENSE) licensed.
