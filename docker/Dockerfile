@@ -8,6 +8,7 @@ COPY ../public ./public
 COPY ../src ./src
 COPY ../tsconfig.json ./
 COPY ../.eslintrc.js ./
+COPY .env .env
 RUN npm run build
 RUN rm -r node_modules
 COPY docker/package.json docker/package-lock.json ./

@@ -14,31 +14,15 @@ npm install
 
 ## Configuration
 
-The app expects to find a `configuration.ts` file in the `/src` directory with this minimal configuration:
+Rename `.env.example` to `.env` or create a new `.env` and replace the configurations.
 
-```ts
-import { Config } from "./contexts/ConfigurationContext";
-
-export const configuration: Config = {
-  customerId: "<your customer ID here>",
-  corpusId: "<your corpus ID here>",
-  apiKey: "<your API key here>",
-  endpoint: "api.vectara.io"
-};
 ```
-
-Sample questions are configued like this:
-
-```ts
-export const configuration: Config = {
-  // ... other configs here
-  questions: [
-    "what was announced in GTC 2024?", 
-    "bash power user", 
-    "Open source LLM", 
-    "What is a vector database?"
-  ]
-};
+REACT_APP_CORPUS_ID=<Vectara corpus ID>
+REACT_APP_CUSTOMER_ID=<Vectara customer ID>
+REACT_APP_APP_TITLE=<App title - e.g Search Hackernews >
+REACT_APP_API_KEY=<Vectara API KEY>
+REACT_APP_ENDPOINT=api.vectara.io
+REACT_APP_QUESTION=<Questions , separated - e.g What is Gemini-Flash?,When will GPT-5 be released?>
 ```
 
 ## Running locally
@@ -50,6 +34,12 @@ npm run start
 ```
 
 If you make changes to the source code, the app will automatically reload with your changes.
+
+## Running it with Docker
+To run it wit docker execute the following command.
+```
+bash ./docker/run.sh
+```
 
 ## Codebase
 
@@ -101,3 +91,26 @@ type Configuration = {
   appTitle?: string;
 };
 ```
+# Author
+
+👤 **Vectara**
+
+- Website: https://vectara.com
+- Twitter: [@vectara](https://twitter.com/vectara)
+- GitHub: [@vectara](https://github.com/vectara)
+- LinkedIn: [@vectara](https://www.linkedin.com/company/vectara/)
+- Discord: [@vectara](https://discord.gg/GFb8gMz6UH)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br/>
+Feel free to check [issues page](https://github.com/vectara/search-hackernews/issues). You can also take a look at the [contributing guide](https://github.com/vectara/vectara-answer/blob/master/CONTRIBUTING.md).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+Copyright © 2024 [Vectara](https://github.com/vectara).<br />
+This project is [Apache 2.0](https://github.com/vectara/search-hackernews/blob/main/LICENSE) licensed.

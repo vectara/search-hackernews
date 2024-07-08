@@ -4,16 +4,16 @@ import { configuration } from "../configuration";
 
 export interface Config {
   // Search
-  endpoint: string;
-  corpusId: string;
-  customerId: string;
-  apiKey: string;
+  endpoint: string | undefined;
+  corpusId: string | undefined;
+  customerId: string | undefined;
+  apiKey: string | undefined;
 
   // App
-  appTitle?: string;
+  appTitle?: string | undefined;
 
   // Questions
-  questions?: string[];
+  questions?: string[] | [];
 }
 
 type Search = {
