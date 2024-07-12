@@ -1,0 +1,10 @@
+name: 💡 New feature request
+description: Something is missing in the search hackernews
+labels: ["new-feat-idea"]
+body:
+  - type: textarea
+    attributes:
+      label: Idea
+      description: What do you think should be in search hackernews.
+    validations:
+      required: true
