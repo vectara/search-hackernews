@@ -27,7 +27,7 @@ REACT_APP_QUESTION=<Questions , separated - e.g What is Gemini-Flash?,When will 
 
 ## Running locally
 
-Run the code locally and serve it at `http://localhost:4444/` with:
+Run the code locally and serve it at `http://localhost:3000/` with:
 
 ```
 npm run start
