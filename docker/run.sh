@@ -9,7 +9,7 @@ fi
 docker rm shn -f 2> /dev/null
 
 # use the Docker command to forward the queries.json path to the container.
-docker run --platform linux/amd64 -d --name shn -p 80:4444/tcp shn
+docker run --platform linux/amd64 -d --name shn -p 80:3000/tcp shn
 
 if [ $? -eq 0 ]; then
   echo "Success! Application is running at http://localhost:80."
